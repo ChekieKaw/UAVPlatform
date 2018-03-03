@@ -52,7 +52,7 @@ class ConnectView:
         lable_baudrate = tk.Label(connection_frame, text='Baudrate')
         lable_timeout = tk.Label(connection_frame, text='Timeout')
         # Connect Button setting
-        self.connect_text_variable.set('Connect')
+        self.connect_text_variable.set('Open')
         self.connect_button = tk.Button(connection_frame,
                                    default=tk.DISABLED,
                                    textvariable=self.connect_text_variable,
@@ -88,20 +88,30 @@ class ConnectView:
         self.timevariable.set(self.time)
         self.port.baudrate = self.entry_variable_baudrate.get()
         self.port.timeout = self.entry_variable_timeout.get()
-        self.port.port = self.com_op.get()
+        index = 0
+        # TODO: find self.com_op in port list
+        """
+        try:
+            index = self.get_com.portlist.index(self.com_op.get())
+        except ValueError:
+            print('Value Error!')
+        """
+        self.port.port = self.get_com.portlist[index].device
         # self.port.connect_to_port()
         try:
-            if self.connect_text_variable.get() == 'Connect':
+            if self.connect_text_variable.get() == 'Open':
                 self.port.connect_to_port()
-                if self.port.connect_state is True :
-                    self.connect_text_variable.set('Disconnect')
+                if self.port.connect_state is True:
+                    self.connect_text_variable.set('Close')
                 else:
                     self.timevariable.set(self.time+'\n Timeout! Retry!')
-            elif self.connect_text_variable.get() == 'Disconnect':
+            elif self.connect_text_variable.get() == 'Close':
                 self.port.disconnect_port()
-                self.connect_text_variable.set('Connect')
+                self.connect_text_variable.set('Open')
         except IOError:
             print('IOError')
+        except:
+            print("Error!")
 
     def get_COM(self):
         self.get_com.get_serial_port()

@@ -43,7 +43,7 @@ class ConnectControl():
         self.connect.timeout = self.timeout
         self.connect.write_timeout = self.write_timeout
         self.connect.rtscts = True
-        # self.connect_state = True
+
         try:
             self.connect.open()
         except serial.SerialTimeoutException:
@@ -51,6 +51,8 @@ class ConnectControl():
             print('Timeout')
         else:
             self.connect_state = True
+
+    # TODO: add Connect method (basing on protocol)
 
     def disconnect_port(self,widget=None):
         self.connect.close()
