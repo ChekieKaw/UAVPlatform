@@ -9,18 +9,18 @@ class Angle:
     rad = 0.0
 
     def __init__(self):
-        if self.deg == 0 or self.rad == 0 :
+        if self.deg == 0 or self.rad == 0:
             if self.deg == 0 and self.rad != 0:
                 self.deg = self.rad2deg()
-            elif self.rad ==0 and self.deg != 0:
+            elif self.rad == 0 and self.deg != 0:
                 self.rad = self.deg2rad()
 
     def deg2rad(self):
-        self.rad = self.deg/180*math.pi
+        self.rad = self.deg / 180 * math.pi
         return self.rad
 
     def rad2deg(self):
-        self.deg = self.rad/math.pi*180
+        self.deg = self.rad / math.pi * 180
         return self.deg
 
 
@@ -31,7 +31,6 @@ class PostureData(Angle):
 
 
 class FlightData:
-
     altitude = 0.0
     ground_velocity = 0.0
     air_velocity = 0.0
@@ -68,12 +67,12 @@ class DataView:
             row.set(self.posture.row.rad)
             pitch.set(self.posture.pitch.rad)
             yaw.set(self.posture.yaw.rad)
-        else :
+        else:
             return 0
         data_row = tk.Label(posture_frame, textvariable=row)
         data_pitch = tk.Label(posture_frame, textvariable=pitch)
         data_yaw = tk.Label(posture_frame, textvariable=yaw)
-        #gird part
+        # gird part
         posture_frame.columnconfigure(0, weight=1)
 
         text_row.grid(column=0, row=0, sticky=tk.W)
@@ -84,7 +83,7 @@ class DataView:
         data_yaw.grid(column=1, row=2, columnspan=2, sticky=tk.E)
         return posture_frame
 
-    def flightdata_view(self,parent=None):
+    def flightdata_view(self, parent=None):
         altitude = tk.DoubleVar()
         ground_velocity = tk.DoubleVar()
         air_velocity = tk.DoubleVar()
@@ -96,8 +95,8 @@ class DataView:
         flight_frame = tk.LabelFrame(parent, text='Flight Data')
         text_altitude = tk.Label(flight_frame, text='Altitude')
         text_ground = tk.Label(flight_frame, text='Ground Velocity')
-        text_air = tk.Label(flight_frame, text = 'Air Velocity')
-        text_distant = tk.Label(flight_frame, text = 'Distant to HOME')
+        text_air = tk.Label(flight_frame, text='Air Velocity')
+        text_distant = tk.Label(flight_frame, text='Distant to HOME')
         data_altitude = tk.Label(flight_frame, textvariable=altitude)
         data_ground = tk.Label(flight_frame, textvariable=ground_velocity)
         data_air = tk.Label(flight_frame, textvariable=air_velocity)
@@ -107,11 +106,10 @@ class DataView:
         text_altitude.grid(column=0, row=0, sticky=tk.W)
         text_ground.grid(column=0, row=1, sticky=tk.W)
         text_air.grid(column=0, row=2, sticky=tk.W)
-        text_distant.grid(column=0 ,row=3, sticky=tk.W)
+        text_distant.grid(column=0, row=3, sticky=tk.W)
         data_altitude.grid(column=1, row=0, columnspan=2, sticky=tk.E)
         data_ground.grid(column=1, row=1, columnspan=2, sticky=tk.E)
         data_air.grid(column=1, row=2, columnspan=2, sticky=tk.E)
         data_distant.grid(column=1, row=3, columnspan=2, sticky=tk.E)
         # flight_frame.mainloop()
         return flight_frame
-
