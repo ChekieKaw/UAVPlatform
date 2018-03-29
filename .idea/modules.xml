@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/UAVPlatform.iml" filepath="$PROJECT_DIR$/.idea/UAVPlatform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/UAV_Pltf.iml" filepath="$PROJECT_DIR$/.idea/UAV_Pltf.iml" />
     </modules>
   </component>
 </project>
